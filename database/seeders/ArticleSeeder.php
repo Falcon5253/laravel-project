@@ -16,7 +16,7 @@ class ArticleSeeder extends Seeder
     {
         $articles = json_decode(file_get_contents(public_path().'/articles.json'), true);
 
-        foreach ($articles as $article) {
+        foreach($articles as $article){
             $newArticle = new Article();
             $newArticle->fill($article);
             $newArticle->save();

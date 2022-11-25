@@ -16,12 +16,11 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->string('full_image');
-            $table->string('preview_image');
             $table->string('name');
-            $table->string('desc');
+            $table->string('preview_image')->nullable();
+            $table->string('full_image')->nullable();
             $table->string('shortDesc')->nullable();
-            $table->boolean('slider')->nullable();
+            $table->string('desc');
             $table->timestamps();
         });
     }

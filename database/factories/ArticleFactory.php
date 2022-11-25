@@ -17,10 +17,9 @@ class ArticleFactory extends Factory
             'date' => $this->faker->date(),
             'name' => $this->faker->word(),
             'preview_image' => 'preview.jpg',
-            'full_image' => 'full.jpeg',
+            'full_image' => 'full.jpg',
             'shortDesc' => $this->faker->sentence(),
             'desc' => $this->faker->text(),
-
         ];
     }
 }

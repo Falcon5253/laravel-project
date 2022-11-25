@@ -1,4 +1,6 @@
 @extends ('layouts.layout')
-@section ('content')
-    <p>О нас</p>
+@section('content')
+    <p>Студенты и преподаватели Политеха</p>
+    <p>Дисциплина "Серверная разработка"</p>
+    <p>Разработка на стороне клиента</p>
 @endsection
