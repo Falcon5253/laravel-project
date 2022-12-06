@@ -5,7 +5,7 @@
     <tr>
       <th scope="col">Date</th>
       <th scope="col">Title</th>
-      <th scope="col">ShortDesc</th>
+      <th scope="col">Краткое описание</th>
     </tr>
   </thead>
   <tbody>

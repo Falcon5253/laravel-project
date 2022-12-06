@@ -42,7 +42,7 @@ class ArticleControllerPolicy
      */
     public function create(User $user)
     {
-        return $user->role_id == 1 ?
+        return $user->role_id == 2 ?
             Response::allow() :
             Response::deny('errors');
     }
@@ -56,7 +56,7 @@ class ArticleControllerPolicy
      */
     public function update(User $user)
     {
-        return $user->role_id == 1 ?
+        return $user->role_id == 2 ?
             Response::allow() :
             Response::deny('errors');
     }
@@ -70,7 +70,7 @@ class ArticleControllerPolicy
      */
     public function delete(User $user)
     {
-        return $user->role_id == 1 ?
+        return $user->role_id == 2 ?
             Response::allow() :
             Response::deny('errors');
     }

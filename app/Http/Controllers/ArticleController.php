@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Comment; 
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\PublicArticle;
+use App\Events\PublicArticleEvent;
 
 
 class ArticleController extends Controller
@@ -51,7 +55,12 @@ class ArticleController extends Controller
         $article->name = request('title');
         $article->shortDesc = request('annotation');
         $article->desc = request('description');
-        $article->save();
+        $result = $article->save();
+        $user = User::where('id', '!=', auth()->id())->get();
+        if ($result){
+            Notification::send($user, new PublicArticle($article));
+            PublicArticleEvent::dispatch($article->name);
+        }
         return redirect('/');
     }
 
@@ -63,6 +72,9 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
+        if (isset($_GET['notify'])){
+            auth()->user()->notifications()->where('id', $_GET['notify'])->first()->markAsRead();
+        }
         $article = Article::FindOrFail($id);
         $comment = Comment::whereColumn([
                                 ['article_id', $id],

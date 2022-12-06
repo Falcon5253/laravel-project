@@ -7,8 +7,8 @@ use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\SendMail;
+use App\Jobs\VeryLongJob;
+
 
 
 class CommentController extends Controller
@@ -63,10 +63,9 @@ class CommentController extends Controller
         $comment->text = request('text');
         $comment->article()->associate($article); 
         $comment->user()->associate(Auth::id());
-        $comment->save();
-        $msg = new SendMail('Добавлен новый комментарий к статье '.$article->name.'. Комментарий: '.$comment->text);
-        Mail::send($msg);
-        return redirect('/article/show/'.request('id'));
+        $result = $comment->save();
+        VeryLongJob::dispatch($article, $comment);
+        return redirect('/article/show/'.request('id'))->with('result', $result);
         // $comment->title = $request->title;
     }
 
