@@ -16,10 +16,10 @@
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
         "pusher-js": "^7.5.0",
-        "vue-loader": "^16.8.3"
+        "vue-loader": "^17.0.1"
     },
     "dependencies": {
-        "vue": "^3.2.45",
+        "vue": "^3.2.36",
         "vue-sweetalert2": "^5.0.5"
     }
 }

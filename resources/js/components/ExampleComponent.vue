@@ -1,6 +1,6 @@
 <template>
     <div v-show="this.name != null" class="alert alert-primary" role="alert">
-       Добавлена новая статья <strong>{{this.name}}</strong>
+        Добавлена новая статья: <strong>{{this.name}}</strong>
     </div>
 </template>
 
@@ -10,22 +10,15 @@
             return {name:null}
         },
         methods:{
-        showAlert() {
-            // Use sweetalert2
-            this.$swal({
-                icon:'success',
-                title:'Добавлена новая запись: ',
-                text: this.name,
-            });
-            }
+            // showAlert() {
+
+            // });
         },
-           created() {
-            window.Echo.channel('test').listen('PublicArticleEvent', (name)=>{
-                console.log(name[1]);
+        created() {
+            Window.Echo.channel('test').listen('PublicArticleEvent', (name)=>{
+                console.log(name);
                 this.name=name[1];
-                this.showAlert();
-            });          
-            
+            });
         }
     }
 </script>

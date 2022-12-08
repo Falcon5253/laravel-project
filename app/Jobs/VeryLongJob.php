@@ -38,6 +38,7 @@ class VeryLongJob implements ShouldQueue
      */
     public function handle()
     {
+        error_log("ggfgfsdafssssssssssssssssssssssssssssssg");
         $msg = new SendMail('Добавлен новый комментарий к статье '.$this->article->name.'. Комментарий: '.$this->comment->text);
         Mail::send($msg);
     }

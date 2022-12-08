@@ -19,7 +19,13 @@ class UserSeeder extends Seeder
             'name'=>'moderator',
             'email'=>'moosbeere_O@mail.ru',
             'password'=>Hash::make('123456'),
-            'role_id'=>'1',
+            'role_id'=>'2',
+        ]);
+        User::create([
+            'name'=>'moderator',
+            'email'=>'ivanov@mail.ru',
+            'password'=>Hash::make('123456'),
+            'role_id'=>'2',
         ]);
     }
 }

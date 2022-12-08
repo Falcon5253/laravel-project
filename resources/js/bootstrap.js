@@ -22,7 +22,16 @@ window.Pusher = require('pusher-js');
 
 window.Echo = new Echo({
     broadcaster: 'pusher',
-    key: process.env.MIX_PUSHER_APP_KEY,
-    cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+    key: '1bb4b9783d027a162a6f',
+    cluster: 'eu',
     forceTLS: true
 });
+
+// var pusher = new Pusher('1bb4b9783d027a162a6f', {
+//     cluster: 'eu'
+//   });
+
+//   var channel = pusher.subscribe('my-channel');
+//   channel.bind('my-event', function(data) {
+//     app.messages.push(JSON.stringify(data));
+//   });

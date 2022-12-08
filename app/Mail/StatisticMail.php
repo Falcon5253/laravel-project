@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SendMail extends Mailable
+class StatisticMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,11 +16,12 @@ class SendMail extends Mailable
      *
      * @return void
      */
-    protected $msg;
-
-    public function __construct(string $text)
+    protected $articleCount;
+    protected $commentCount;
+    public function __construct($articleCount, $commentCount)
     {
-        $this->msg = $text;
+        $this->articleCount=$articleCount;
+        $this->commentCount=$commentCount;
     }
 
     /**
@@ -32,7 +33,10 @@ class SendMail extends Mailable
     {
         return $this->from(ENV('MAIL_USERNAME'))
                     ->to('mr.sokol5253@gmail.com')
-                    ->with('msg', $this->msg)
-                    ->view('mail.send');
+                    ->with([
+                        'articleCount'=>$this->articleCount,
+                        'commentCount'=>$this->commentCount
+                        ])
+                    ->view('mail.stat');
     }
 }

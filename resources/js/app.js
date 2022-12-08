@@ -10,4 +10,3 @@ app.use(VueSweetalert2);
 
 app.component('App', App)
 app.mount('#app')
-

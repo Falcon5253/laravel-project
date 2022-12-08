@@ -38,4 +38,8 @@ class PublicArticleEvent implements ShouldBroadcast
     {
         return ['name', $this->name];
     }
+    public function broadcastAs()
+    {
+        return 'PublicArticleEvent';
+    }
 }
